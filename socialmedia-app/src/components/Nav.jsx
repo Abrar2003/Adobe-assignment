@@ -20,19 +20,19 @@ export default function Nav() {
       color={"#000035"}
     >
       <Link to={"/home"}>
-        <Flex align={"center"} gap={"20px"}>
-          <Text fontSize={"xl"}>Home </Text>
+        <Flex fontSize={["xs", "md", "l", "xl", "xl"]} gap={["5px","10px","15px","20px","20px"]} align={"center"}>
+          <Text>Home </Text>
           <AiFillHome />
         </Flex>
       </Link>
       <Link to={"/analytics"}>
-        <Flex align={"center"} gap={"20px"}>
-          <Text fontSize={"xl"}>Analytics</Text>
+        <Flex fontSize={["xs", "md", "l", "xl", "xl"]} align={"center"} gap={["5px","10px","15px","20px","20px"]}>
+          <Text>Analytics</Text>
           <DiGoogleAnalytics />
         </Flex>
       </Link>
       <Link to={"/"}>
-      <Flex align={"center"} gap={"20px"}>
+      <Flex fontSize={["xs", "md", "l", "xl", "xl"]} align={"center"} gap={["5px","10px","15px","20px","20px"]}>
         <Text>
           New Post/User 
         </Text>

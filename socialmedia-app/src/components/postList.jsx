@@ -9,11 +9,17 @@ export default function PostList() {
     axios.get("https://light-kimono-yak.cyclic.app/posts")
     .then(res => setPosts(res.data));
   }, []);
-  console.log(posts);
+  const deletePost = async (id) => {
+    alert("You are deleting this Post");
+    await axios.delete(`https://light-kimono-yak.cyclic.app/posts/${id}`);
+    axios.get("https://light-kimono-yak.cyclic.app/posts")
+    .then(res => setPosts(res.data));
+  };
   return (
     <Grid
       m={"auto"}
-      w={["90%", "70%", "40%", "40%", "40%"]}
+      justifyContent={"center"}
+      w={["90%", "70%", "40%", "50%", "60%"]}
       templateColumns={[
         "repeat(1, 1fr)",
         "repeat(2, 1fr)",
@@ -23,7 +29,7 @@ export default function PostList() {
       gap={"30px"}
     >
       {posts.map((e) => (
-        <PostCard key={e._id} username={e.username} id={e._id} />
+        <PostCard key={e._id} deletePost={deletePost} username={e.username} id={e._id} />
       ))}
     </Grid>
   );
