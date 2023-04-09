@@ -9,7 +9,29 @@ PostsRouter.use(express.json());
 //GET /posts/ Get all the posts for postList
 PostsRouter.get("/", async(req, res) => {
   try{
-    const posts = await Post.find();
+    const posts = await Post.aggregate([
+      {
+        $lookup: { // join with the User collection to get the username
+          from: 'users',
+          localField: 'user_id',
+          foreignField: '_id',
+          as: 'user'
+        }
+      },
+      {
+        $unwind: '$user' // destructure the user object array to a single object
+      },
+      {
+        $project: { // select only necessary fields from Post and User collections
+          _id: 1,
+          content: 1,
+          created_at: 1,
+          updated_at: 1,
+          likes: 1,
+          'user.name': 1
+        }
+      }
+    ]);
     res.status(200).send(posts);
   }
   catch(err){
