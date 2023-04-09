@@ -1,9 +1,9 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const config = require("./config.js");
-const UserRouter = require("./routers/user.router.js");
-const PostsRouter = require("./routers/posts.router.js");
-const AnalyticsRouter = require("./routers/analytics.router.js");
+const config = require("./src/config.js");
+const UserRouter = require("./src/routers/user.router.js");
+const PostsRouter = require("./src/routers/posts.router.js");
+const AnalyticsRouter = require("./src/routers/analytics.router.js");
 
 const app = express();
 
