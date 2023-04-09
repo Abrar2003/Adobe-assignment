@@ -10,7 +10,29 @@ PostsRouter.use(express.json());
 //GET /posts/ Get all the posts for postList
 PostsRouter.get("/", async (req, res) => {
   try {
-    const posts = await Post.find();
+    const posts = await Post.aggregate([
+      {
+        $lookup: {
+          from: "users",
+          localField: "user_id",
+          foreignField: "_id",
+          as: "user"
+        }
+      },
+      {
+        $unwind: "$user"
+      },
+      {
+        $project: {
+          _id: 1,
+          content: 1,
+          likes: 1,
+          created_at: 1,
+          updated_at: 1,
+          username: "$user.name"
+        }
+      }
+    ])
     res.status(200).send(posts);
   } catch (err) {
     res.status(400).send({ message: err });
@@ -34,30 +56,11 @@ PostsRouter.post("/", async (req, res) => {
 // GET /posts/:id: Retrieve a post by id.
 PostsRouter.get("/:id", async (req, res) => {
   try {
-    const post = await Post.aggregate([
-      { $match: { _id: mongoose.Types.ObjectId(req.params.id) } },
-      {
-        $lookup: {
-          from: 'users',
-          localField: 'user_id',
-          foreignField: '_id',
-          as: 'user'
-        }
-      },
-      {
-        $project: {
-          _id: 1,
-          content: 1,
-          likes: 1,
-          created_at: 1,
-          updated_at: 1,
-          'user.name': 1
-        }
-      }
-    ]);
-
-    if (!post || post.length === 0) {
-      return res.status(404).json({ message: 'Post not found' });
+    const post = await Post.findById(req.params.id);
+    if(post){
+      res.status(200).send(post);
+    }else{
+      res.status(404).send({message: "Post not found"});
     }
   } catch (err) {
     res.status(500).send({ message: err.message });
