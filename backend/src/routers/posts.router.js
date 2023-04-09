@@ -34,35 +34,29 @@ PostsRouter.post("/", async (req, res) => {
 PostsRouter.get("/:id", async (req, res) => {
   try {
     const post = await Post.aggregate([
-      { $match: { _id: req.params.id } },
+      { $match: { _id: mongoose.Types.ObjectId(req.params.id) } },
       {
         $lookup: {
-          // join with the User collection to get the username
-          from: "users",
-          localField: "user_id",
-          foreignField: "_id",
-          as: "user",
-        },
-      },
-      {
-        $unwind: "$user", // destructure the user object array to a single object
+          from: 'users',
+          localField: 'user_id',
+          foreignField: '_id',
+          as: 'user'
+        }
       },
       {
         $project: {
-          // select only necessary fields from Post and User collections
           _id: 1,
           content: 1,
+          likes: 1,
           created_at: 1,
           updated_at: 1,
-          likes: 1,
-          "user.name": 1,
-        },
-      },
+          'user.name': 1
+        }
+      }
     ]);
-    if (post) {
-      res.send(post);
-    } else {
-      res.status(404).send({ message: "Post not found" });
+
+    if (!post || post.length === 0) {
+      return res.status(404).json({ message: 'Post not found' });
     }
   } catch (err) {
     res.status(500).send({ message: err.message });
