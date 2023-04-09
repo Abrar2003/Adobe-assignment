@@ -88,6 +88,10 @@ PostsRouter.put("/:id", async (req, res) => {
 PostsRouter.delete("/:id", async (req, res) => {
   try {
     const post = await Post.findByIdAndDelete(req.params.id);
+    if (!post) {
+      return res.status(404).send('Post not found');
+    }
+    res.send(post);
   } catch (err) {
     res.status(500).send({ message: err.message });
   }
