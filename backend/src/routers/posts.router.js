@@ -87,13 +87,7 @@ PostsRouter.put("/:id", async (req, res) => {
 // DELETE /posts/:id: Delete a post by id.
 PostsRouter.delete("/:id", async (req, res) => {
   try {
-    const post = await Post.findById(req.params.id);
-    if (post) {
-      await post.remove();
-      res.send({ message: "Post deleted" });
-    } else {
-      res.status(404).send({ message: "Post not found" });
-    }
+    const post = await Post.findByIdAndDelete(req.params.id);
   } catch (err) {
     res.status(500).send({ message: err.message });
   }
