@@ -4,14 +4,25 @@
 
  ## About : ##
 #### 
-  This is a E-commerce website where you can buy food products and fresh vegetables and order them to your doorstep. this is collaborative project made by 5 individuals in 4 days 
+  This is a Social Media web app where you can create your account and post your random thoughts
 </p>
 
     
 ## Features : ##
 
     • Intereactive navbar & Home Page
-    • Email-otp based Signup-Login functionality
+    • UserForm: A form for creating and updating user profiles.
+    • PostForm: A form for creating and updating posts.
+    • UserList: A list of users, with options to view, edit, and delete users.
+    • PostList: A list of posts, with options to view, edit, delete, like, and unlike
+      posts.
+    • UserAnalytics: A page displaying user analytics, such as the total number of
+      users and the top 5 most active users.
+    • PostAnalytics: A page displaying post analytics, such as the total number of
+      posts and the top 5 most liked posts.
+    • Implemented navigation between the main application pages and the analytics
+      pages.
+
     • Product Page with sorting & filtering functionality
     • Single Product view page
     • Dynamic cart page and payment page
@@ -19,9 +30,8 @@
    
  ## Tech-Stack Used : ##
 
-    • Next-JS
+    • React.js
     • Chakra-UI
-    • JavaScript
-    • Mongo-DB
-    • JWT-Authantication
-    • CSS
+    • JNode.js
+    • MongoDB
+    • Express.js
