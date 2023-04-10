@@ -7,7 +7,34 @@
   This is a Social Media web app where you can create your account and post your random thoughts
 </p>
 
-    
+## [Getting Started]
+
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/Abrar2003/Adobe-assignment
+```
+
+Go to the project directory
+
+```bash
+  cd ./socialmedia-app
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the localhost server
+
+```bash
+  npm start
+```
+
 ## Features : ##
 
     • Intereactive navbar & Home Page
