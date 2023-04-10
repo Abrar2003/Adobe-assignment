@@ -42,6 +42,7 @@ AnalyticsRouter.get("/users/top-active", async (req, res) => {
 AnalyticsRouter.get("/posts", async (req, res) => {
   try {
     const TotalPosts = await Post.countDocuments();
+    console.log(TotalPosts);
     res.status(200).send({ TotalPosts });
   } catch (err) {
     res.status(400).send({ message: err.message });
@@ -51,6 +52,7 @@ AnalyticsRouter.get("/posts", async (req, res) => {
 AnalyticsRouter.get("/posts/top-liked", async (req, res) => {
   try {
     const mostLiked = await Post.find().sort({ likes: -1 }).limit(5);
+    console.log(mostLiked)
     res.status(200).send(mostLiked);
   } catch (err) {
     res.status(400).send({ message: err.message });
