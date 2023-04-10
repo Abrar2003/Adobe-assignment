@@ -1,10 +1,13 @@
 # Adobe-assignment
 
-# Project : [Nature's Basket - clone](https://annoyed-spark-4097-6yv7.vercel.app/) #
-
  ## About : ##
 #### 
-  This is a Social Media web app where you can create your account and post your random thoughts
+  A simple social media platform consisting of a backend
+API and a frontend UI, and analytics pages. The platform supports creating,
+reading, updating, and deleting operations for user profiles and posts. In addition,
+users can "like" and "unlike" posts. The analytics pages displays
+insights on user engagement and content popularity.
+
 </p>
 
 ## [Getting Started]
