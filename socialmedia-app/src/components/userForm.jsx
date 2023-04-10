@@ -13,6 +13,7 @@ import {
   Textarea,
 } from "@chakra-ui/react";
 import axios from "axios";
+import { Link, redirect } from "react-router-dom";
 
 export default function UserForm() {
   const intialUser = {
@@ -44,6 +45,9 @@ export default function UserForm() {
         const newUser = await axios.post("https://light-kimono-yak.cyclic.app/users", user)
         const user_id = newUser.data._id
         console.log(user_id)
+        localStorage.setItem("user_id", user_id)
+        alert("User Succefully created");
+        redirect("/");
     }
     catch(err){
         alert(err.response.data.message);
@@ -98,7 +102,7 @@ export default function UserForm() {
                   bg: "blue.500",
                 }}
                 onClick={()=>onSubmit()}
-              >
+                >
                 Register
               </Button>
             </Stack>

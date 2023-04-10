@@ -68,6 +68,7 @@ export default function PostCard({ id, username, deletePost }) {
   }
   return (
     <Stack
+    color={"white"}
     gap={"15px"}
       justifyContent={"space-between"}
       rounded={"lg"}
@@ -79,15 +80,15 @@ export default function PostCard({ id, username, deletePost }) {
       <Text fontSize={"l"}>Content: {post.content}</Text>
       <Text fontSize={"l"}>Likes: {post.likes}</Text>
       <Flex gap={"20px"}>
-        <Button onClick={like} disabled={liked}>
+        <Button bg={"blue.400"} onClick={like} disabled={liked}>
           <AiFillLike />
         </Button>
-        <Button onClick={dislike} disabled={!liked || post.likes == 0}>
+        <Button bg={"blue.400"} onClick={dislike} disabled={!liked || post.likes == 0}>
           <AiFillDislike />
         </Button>
       </Flex>
       <Flex gap={"20px"} alignItems={"center"}>
-        <Button onClick={onOpen}>
+        <Button bg={"blue.400"} onClick={onOpen}>
           <Text mr={"10px"}>Edit</Text>
           <FiEdit />
         </Button>

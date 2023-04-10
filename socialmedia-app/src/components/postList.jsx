@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PostCard from "./PostCard";
-import { Grid } from "@chakra-ui/react";
+import { Grid, Heading, Box } from "@chakra-ui/react";
 import axios from "axios";
 
 export default function PostList() {
@@ -16,6 +16,8 @@ export default function PostList() {
     .then(res => setPosts(res.data));
   };
   return (
+    <Box>
+    <Heading mb={"30px"} align={"center"} color={"white"}>All Posts</Heading>
     <Grid
       m={"auto"}
       justifyContent={"center"}
@@ -27,10 +29,11 @@ export default function PostList() {
         "repeat(3, 1fr)",
       ]}
       gap={"30px"}
-    >
+      >
       {posts.map((e) => (
         <PostCard key={e._id} deletePost={deletePost} username={e.username} id={e._id} />
-      ))}
+        ))}
     </Grid>
+        </Box>
   );
 }

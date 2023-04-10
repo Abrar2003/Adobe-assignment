@@ -57,6 +57,7 @@ export default function UserCard({ id, deleteUser }) {
   
   return (
     <Stack
+    color={"white"}
       gap={"20px"}
       rounded={"lg"}
       bg={"gray.700"}
@@ -67,7 +68,7 @@ export default function UserCard({ id, deleteUser }) {
       <Text fontSize={"l"}>Eamil: {user.email}</Text>
       <Text fontSize={"l"}>Bio: {user.bio}</Text>
       <Flex gap={"20px"} alignItems={"center"}>
-        <Button onClick={onOpen}>
+        <Button bg={"blue.400"} onClick={onOpen}>
           <Text mr={"10px"}>Edit</Text>
           <FiEdit />
         </Button>
