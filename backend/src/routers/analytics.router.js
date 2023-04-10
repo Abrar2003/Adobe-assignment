@@ -29,7 +29,7 @@ AnalyticsRouter.get("/users/top-active", async (req, res) => {
     { $limit: 5 },
   ]);
   const ids = p.map((obj) => obj._id);
-  console.log(ids);
+  console.log(p);
   try {
     const topUsers = await User.find({ _id: { $in: ids } });
     res.status(200).send(topUsers);
